@@ -8,7 +8,7 @@ import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 import warnings
 warnings.filterwarnings('ignore')
-import time
+# import time
 
 def data_cleaning(data1):
     #Dropping columns with only 1 unique value, having more than 20% null data and containing data other than int or float datatypes
@@ -57,10 +57,10 @@ def model_split_build(data1):
             st.bar_chart(forest_importances)
         progress_bar = st.progress(0)
         status_text = st.empty()
-        for i in range(1, 101):
-            status_text.text("%i%% Complete" % i)
-            progress_bar.progress(i)
-            time.sleep(0.05)
+        # for i in range(1, 101):
+        #     status_text.text("%i%% Complete" % i)
+        #     progress_bar.progress(i)
+        #     time.sleep(0.05)
         st.session_state['model'] = rfr
         # with open('model.pkl','wb') as f:
         #     pickle.dump(rfr, f)
@@ -97,10 +97,10 @@ def model_split_build(data1):
             st.bar_chart(forest_importances)
         progress_bar = st.progress(0)
         status_text = st.empty()
-        for i in range(1, 101):
-            status_text.text("%i%% Complete" % i)
-            progress_bar.progress(i)
-            time.sleep(0.05)
+        # for i in range(1, 101):
+        #     status_text.text("%i%% Complete" % i)
+        #     progress_bar.progress(i)
+        #     time.sleep(0.05)
         st.session_state['model'] = rfc
         # with open('model.pkl','wb') as f:
         #     pickle.dump(rfc, f)
