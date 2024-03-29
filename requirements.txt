@@ -1,0 +1,12 @@
+numpy
+pandas
+scikit-learn
+os-sys
+DateTime
+plotly
+TIME-python
+streamlit_pandas_profiling
+ydata_profiling
+matplotlib.pyplot
+pickle5
+time
