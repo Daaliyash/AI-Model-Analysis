@@ -7,7 +7,7 @@ st.set_page_config(page_title="Regression Analysis", layout='wide')
 
 # with open('style.css') as f:
 #     st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
-st.write('Working')
+
 if "page" not in st.session_state:
     st.session_state["page"] = 0
 
