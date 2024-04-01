@@ -28,7 +28,7 @@ def page_0():
     with st.container(border=True):
         cwd = os.getcwd()
         files = os.listdir(cwd)
-        documents = [f for f in files if os.path.isfile(os.path.join(cwd, f)) and f[-3:] == 'csv']
+        documents = [f for f in files if os.path.isfile(os.path.join(cwd, f)) and (f[-3:] == 'csv' or f[-4:] == 'xlsx')]
         data = pd.DataFrame({'Select': [False for i in range(len(documents))],
                 'Index': [i+1 for i in range(len(documents))],
                 'File Name': documents,
@@ -41,15 +41,23 @@ def page_0():
                             hide_index=True, 
                             use_container_width=True)
         st.session_state['file_path'] = res.loc[res.Select.idxmax()]['File Name']
+        
         uploaded_file = st.file_uploader('Upload a new file:')
-        try:
+        if uploaded_file is not None:
             # d = pd.read_csv(uploaded_file)
-            pd.read_csv(uploaded_file).to_csv(uploaded_file.name)
+            if uploaded_file.name[-3:] == 'csv':
+                try:
+                    pd.read_csv(uploaded_file).to_csv(uploaded_file.name)
+                except:
+                    pd.read_csv(uploaded_file, delimiter=';').to_csv(uploaded_file.name)
+                st.session_state['file_data'] = pd.read_csv(uploaded_file)
+            else:
+                pd.read_excel(uploaded_file).to_excel(uploaded_file.name)
             st.session_state['file_path'] = uploaded_file.name
             # for i in range(1):
             #     st.rerun()
-        except:
-            st.write()
+        # except:
+        #     st.write()
         col1, col2 = st.columns([3,1])
         if len(res[res.Select == True])==1 or uploaded_file is not None:
             with col1:
@@ -61,10 +69,18 @@ def page_0():
                         st.rerun()
         else:
             st.write('Please select only 1 option / database')
+        # st.session_state['file_data'] = pd.read_csv(res.loc[res.Select.idxmax()]['File Name'])
 
 def page_1():
     st.title('Regression/Classification Analysis')
-    df = pd.read_csv(st.session_state['file_path'])
+    # st.dataframe(st.session_state['file_data'])
+    try:
+        try:
+            df = pd.read_csv(st.session_state['file_path'])
+        except:
+            df = pd.read_csv(st.session_state['file_path'], delimiter = ';')
+    except:
+        df = pd.read_excel(st.session_state['file_path'])
     df = data_cleaning(df)
     with st.container(border=True):
         col1, col2, col3 = st.columns([2,2,2])
@@ -78,10 +94,6 @@ def page_1():
             if st.button('Predictor'):
                 st.session_state['clicked'] = 3
     
-        # if st.session_state['clicked'] == None:
-        #     st.write('---')
-        #     st.write('---')
-
         if st.session_state.clicked == 1:
             ind_var, dep_var, next_bt = ind_dep(df)
             if next_bt:
