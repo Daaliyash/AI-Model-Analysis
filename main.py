@@ -23,6 +23,9 @@ if 'next_bt' not in st.session_state:
 if 'model' not in st.session_state:
     st.session_state['model'] = 0
 
+if 'file_data' not in st.session_state:
+    st.session_state['file_data'] = 0
+
 if st.session_state.page == 0:
     page_0()
 elif st.session_state.page == 1:
