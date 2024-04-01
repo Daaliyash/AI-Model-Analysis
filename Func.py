@@ -55,8 +55,8 @@ def model_split_build(data1):
         with st.container(border=True):
             st.info("**Visualization of how each Independent variable impacts the Dependent variable**")
             st.bar_chart(forest_importances)
-        progress_bar = st.progress(0)
-        status_text = st.empty()
+        # progress_bar = st.progress(0)
+        # status_text = st.empty()
         # for i in range(1, 101):
         #     status_text.text("%i%% Complete" % i)
         #     progress_bar.progress(i)
@@ -95,8 +95,8 @@ def model_split_build(data1):
         with st.container(border=True):
             st.info("**Visualization of how each Independent variable impacts the Dependent variable**")
             st.bar_chart(forest_importances)
-        progress_bar = st.progress(0)
-        status_text = st.empty()
+        # progress_bar = st.progress(0)
+        # status_text = st.empty()
         # for i in range(1, 101):
         #     status_text.text("%i%% Complete" % i)
         #     progress_bar.progress(i)
