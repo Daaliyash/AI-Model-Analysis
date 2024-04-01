@@ -50,7 +50,7 @@ def page_0():
                     pd.read_csv(uploaded_file).to_csv(uploaded_file.name)
                 except:
                     pd.read_csv(uploaded_file, delimiter=';').to_csv(uploaded_file.name)
-                st.session_state['file_data'] = pd.read_csv(uploaded_file)
+                #st.session_state['file_data'] = pd.read_csv(uploaded_file)
             else:
                 pd.read_excel(uploaded_file).to_excel(uploaded_file.name)
             st.session_state['file_path'] = uploaded_file.name
