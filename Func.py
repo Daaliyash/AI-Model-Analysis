@@ -12,9 +12,8 @@ warnings.filterwarnings('ignore')
 
 def data_cleaning(data1):
     #Dropping columns with only 1 unique value, having more than 20% null data and containing data other than int or float datatypes
-    #or (data1[i].dtype != "int64" and data1[i].dtype != "float64")
     for i in data1.columns:
-        if (len(data1[i].unique()) <= 1) or (len(data1[i].unique()) == 2 and True in np.isnan(data1[i].unique())) or (data1[i].isna().sum() >= 0.2*(len(data1[i]))):
+        if (len(data1[i].unique()) <= 1) or (len(data1[i].unique()) == 2 and True in np.isnan(data1[i].unique())) or (data1[i].isna().sum() >= 0.2*(len(data1[i]))) or (data1[i].dtype != "int64" and data1[i].dtype != "float64"):
             data1.drop(i,axis=1,inplace=True)
 
     #Treating Nan values
