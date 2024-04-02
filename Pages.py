@@ -105,11 +105,9 @@ def page_1():
         elif st.session_state.clicked == 2:
             ind_var, dep_var, next_bt = ind_dep(df)
             st.session_state.ind_var, st.session_state.dep_var, st.session_state.next_bt = ind_var, dep_var, next_bt
-            if next_bt and len(ind_var)>=1 and len(dep_var)>=1:
+            if next_bt:
                 st.write('----')
                 model_split_build(df[ind_var+dep_var])
-            else:
-                st.warning('Please fill all the fields')
                 # st.write('----')
         elif st.session_state.clicked == 3:
             # st.write('----')
