@@ -83,7 +83,7 @@ def model_split_build(data1):
             st.pyplot(plt, use_container_width=True)
             # st.slider('', 0, 100, round(accuracy_score(y_test,y_pred)*100), disabled=True)
             st.info(f'The Error rate is {acc_score(y_test, y_pred)} for the range of {y.max() - y.min()}')
-            st.info(f'Accuracy: {(rfr.score(X_test, y_test)*100).round(2)}%')
+            st.info(f'Accuracy (R2): {(rfr.score(X_test, y_test)*100).round(2)}%')
 
     elif len(y.unique()) <= 10:
         st.title('Classification Analysis')
