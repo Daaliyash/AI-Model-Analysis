@@ -24,6 +24,10 @@ def ind_dep(df):
     return ind_var, dep_var, next_bt
 
 def page_0():
+    st.image(
+            "https://www.oee-institute.de/assets/images/partner/Datalizer_org.jpg",
+            width=400, # Manually Adjust the width of the image as per requirement
+        )
     st.title('List of Datasets')
     with st.container(border=True):
         cwd = os.getcwd()
