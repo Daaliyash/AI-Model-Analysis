@@ -25,7 +25,7 @@ def ind_dep(df):
 
 def page_0():
     st.image(
-            "https://www.oee-institute.de/assets/images/partner/Datalizer_org.jpg",
+            "https://datalyzer.b-cdn.net/wp-content/uploads/2022/01/logo-3.png.webp",
             width=200, # Manually Adjust the width of the image as per requirement
         )
     st.title('List of Datasets')
